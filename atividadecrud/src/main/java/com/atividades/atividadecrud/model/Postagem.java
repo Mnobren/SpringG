@@ -2,17 +2,19 @@ package com.atividades.atividadecrud.model;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
+@Table(name = "postagem")
 public class Postagem {
 
 	@Id
@@ -26,6 +28,10 @@ public class Postagem {
 	private String texto;
 
 	private Date date = new java.sql.Date(System.currentTimeMillis());
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
 
 	//GetSet
 	
@@ -52,5 +58,11 @@ public class Postagem {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public Tema getTema() {
+		return tema;
+	}
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 }
