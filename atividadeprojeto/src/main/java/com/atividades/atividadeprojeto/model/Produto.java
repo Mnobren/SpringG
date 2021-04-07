@@ -17,7 +17,7 @@ public class Produto
 {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private int idProduto;
+	private long idProduto;
 	
 	@NotNull
 	private String tituloProduto;
@@ -37,7 +37,7 @@ public class Produto
 	@JsonIgnoreProperties("fk_idProduto")
 	private Loja fk_idLoja;
 	
-	public int getIdProduto() {
+	public long getIdProduto() {
 		return idProduto;
 	}
 
